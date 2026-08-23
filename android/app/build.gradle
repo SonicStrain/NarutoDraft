@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.narutodraft.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.narutodraft.app"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+// Transitive deps (via androidx lifecycle/coroutines) pull kotlin-stdlib-jdk7/jdk8
+// at an older version than kotlin-stdlib itself resolves to; since Kotlin 1.8 those
+// extension artifacts are folded into kotlin-stdlib, so mismatched versions collide
+// on the same classes. Pin them all to one version to resolve the clash.
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.webkit:webkit:1.11.0'
+}
+
+// The web app in ../webapp is the single source of truth for game content.
+// Mirror it into assets/ on every build so the two never drift apart.
+tasks.register('syncWebAssets', Copy) {
+    from "${rootDir}/../webapp"
+    into "${projectDir}/src/main/assets"
+}
+tasks.named('preBuild').configure { dependsOn 'syncWebAssets' }

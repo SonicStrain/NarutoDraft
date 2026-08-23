@@ -1,0 +1,20 @@
+# Android / Gradle
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/*.iml
+android/.idea/
+android/captures/
+android/.externalNativeBuild/
+android/.cxx/
+
+# The Android app mirrors ../webapp into assets/ at build time (see
+# app/build.gradle syncWebAssets task) — webapp/ is the single source
+# of truth, so the generated copy is never committed.
+android/app/src/main/assets/*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
