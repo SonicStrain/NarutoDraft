@@ -82,7 +82,7 @@ C('Hinata Hyuga', 'Byakugan Princess', 81, 72, 85, 45, 74, 70, 76, 'https://stat
 C('Neji Hyuga', 'Genius of the Hyuga', 84, 74, 90, 45, 75, 80, 85, 'https://static.wikia.nocookie.net/naruto/images/7/7e/Neji_Part_I.png/revision/latest/scale-to-width-down/300?cb=20160118081119');
 C('Rock Lee', 'Gates · Handsome Devil of the Leaf', 86, 1, 98, 1, 70, 95, 62, 'https://static.wikia.nocookie.net/naruto/images/9/97/Rock_Lee_Part_I.png/revision/latest/scale-to-width-down/300?cb=20181229065526');
 C('Tenten', 'Weapons Mistress', 75, 72, 74, 35, 60, 70, 72, 'https://static.wikia.nocookie.net/naruto/images/d/da/Tenten_Part_1.png/revision/latest/scale-to-width-down/300?cb=20180510203032');
-C('Might Guy', '8 Gates · Noble Blue Beast', 97, 10, 99, 5, 92, 99, 75, 'https://static.wikia.nocookie.net/naruto/images/3/31/Might_Guy.png/revision/latest/scale-to-width-down/300?cb=20150401084456');
+C('Might Guy', '8 Gates · Noble Blue Beast', 93, 10, 99, 5, 85, 92, 70, 'https://static.wikia.nocookie.net/naruto/images/3/31/Might_Guy.png/revision/latest/scale-to-width-down/300?cb=20150401084456');
 C('Asuma Sarutobi', 'Chakra Blades · 12 Guardians', 83, 80, 86, 45, 78, 74, 80, 'https://static.wikia.nocookie.net/naruto/images/7/7c/Asuma.png/revision/latest/scale-to-width-down/300?cb=20150822043018');
 C('Kurenai Yuhi', 'Genjutsu Mistress', 79, 70, 60, 92, 68, 65, 80, 'https://static.wikia.nocookie.net/naruto/images/6/67/Kurenai_Part_I.png/revision/latest/scale-to-width-down/300?cb=20150207094753');
 C('Jiraiya', 'Toad Sage · Legendary Sannin', 91, 94, 82, 60, 92, 78, 86, 'https://static.wikia.nocookie.net/naruto/images/1/1f/Jiraiya_Young.png/revision/latest/scale-to-width-down/300?cb=20260220182003');

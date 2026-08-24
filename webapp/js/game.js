@@ -105,10 +105,27 @@ function teamAggregate(p) {
 /* ---------------- Screens & rendering ---------------- */
 const $ = sel => document.querySelector(sel);
 const $$ = sel => document.querySelectorAll(sel);
-function show(screenId) {
+
+/* Pure DOM update, no history side effect — used for both forward
+   navigation (show) and history-driven navigation (popstate). */
+function applyScreen(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
   $('#' + screenId).classList.remove('hidden');
 }
+
+/* Forward navigation: updates the screen AND pushes a history entry, so
+   the hardware/browser back button has somewhere to go. Without this the
+   app never leaves its single index.html page, so WebView.canGoBack()
+   is always false and Android's back button closes the app outright
+   instead of returning to the previous screen. */
+function show(screenId) {
+  applyScreen(screenId);
+  history.pushState({ screen: screenId }, '', '#' + screenId.replace('screen-', ''));
+}
+
+window.addEventListener('popstate', e => {
+  applyScreen((e.state && e.state.screen) || 'screen-home');
+});
 
 const TIER_LABELS = { god: 'GOD', kage: 'KAGE', elite: 'ELITE', common: 'CHUNIN' };
 
@@ -422,6 +439,12 @@ function openExplore() {
 
 /* ---------------- Wiring ---------------- */
 document.addEventListener('DOMContentLoaded', () => {
+  // Establish the home screen as the base history entry, so a back
+  // press from home (with nothing pushed before it) falls through to
+  // the platform default — closing the app on Android, or leaving the
+  // page in a browser — instead of us pushing an extra entry for it.
+  history.replaceState({ screen: 'screen-home' }, '', '#home');
+
   $('#btn-mode-ai').addEventListener('click', () => { $('#name-p2-wrap').classList.add('hidden'); startGame('ai'); });
   $('#btn-mode-2p').addEventListener('click', () => {
     if ($('#name-p2-wrap').classList.contains('hidden')) {
