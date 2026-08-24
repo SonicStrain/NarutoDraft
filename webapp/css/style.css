@@ -49,7 +49,7 @@ ul { margin: 0.4em 0; padding-left: 1.2em; }
 
 .mode-cards {
   display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
-  margin: 32px auto 20px; max-width: 640px;
+  margin: 32px auto 20px; max-width: 760px;
 }
 .mode-card {
   background: linear-gradient(160deg, var(--bg-panel-2), var(--bg-panel));
@@ -125,13 +125,15 @@ ul { margin: 0.4em 0; padding-left: 1.2em; }
   border: 1px solid var(--border);
 }
 .slot.empty { color: var(--ink-dim); background: rgba(255,255,255,0.02); }
-.slot.filled { background: rgba(255,255,255,0.04); }
+.slot.filled { background: rgba(255,255,255,0.04); color: var(--ink); }
 .slot-role { font-weight: 700; white-space: nowrap; }
 .slot-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .slot-ovr { font-weight: 800; color: var(--accent-2); }
 .slot-fit { font-size: 0.75rem; color: var(--good); }
 .slot.filled.tier-god { border-color: var(--god-2); }
 .slot.filled.tier-kage { border-color: var(--kage-2); }
+.slot.filled.tier-elite { border-color: var(--elite-2); }
+.slot.filled.tier-common { border-color: var(--common-2); }
 
 .chem-meter { margin-top: 12px; }
 .chem-label { font-size: 0.85rem; color: var(--ink-dim); display: flex; justify-content: space-between; }
@@ -191,8 +193,10 @@ ul { margin: 0.4em 0; padding-left: 1.2em; }
 }
 .card-stats b { display: block; font-size: 0.85rem; }
 
-/* Tier palettes */
-.tier-god {
+/* Tier palettes — scoped to .ut-card so they never leak dark, light-card
+   text colors onto other dark-background elements (e.g. roster slots)
+   that happen to share the same tier-* class for its accent color. */
+.ut-card.tier-god {
   background: linear-gradient(160deg, var(--god-1), var(--god-2) 45%, var(--god-3));
   color: #3a1e00;
   border: 2px solid #fff2b0;
@@ -201,9 +205,9 @@ ul { margin: 0.4em 0; padding-left: 1.2em; }
   animation: holo 3.5s ease infinite;
 }
 @keyframes holo { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
-.tier-kage { background: linear-gradient(160deg, var(--kage-1), var(--kage-2) 55%, var(--kage-3)); color: #2e2000; border: 2px solid #f0d27a; }
-.tier-elite { background: linear-gradient(160deg, var(--elite-1), var(--elite-2) 55%, var(--elite-3)); color: #131a2c; border: 2px solid #d7dced; }
-.tier-common { background: linear-gradient(160deg, var(--common-1), var(--common-2) 55%, var(--common-3)); color: #2a1a08; border: 2px solid #c99a63; }
+.ut-card.tier-kage { background: linear-gradient(160deg, var(--kage-1), var(--kage-2) 55%, var(--kage-3)); color: #2e2000; border: 2px solid #f0d27a; }
+.ut-card.tier-elite { background: linear-gradient(160deg, var(--elite-1), var(--elite-2) 55%, var(--elite-3)); color: #131a2c; border: 2px solid #d7dced; }
+.ut-card.tier-common { background: linear-gradient(160deg, var(--common-1), var(--common-2) 55%, var(--common-3)); color: #2a1a08; border: 2px solid #c99a63; }
 
 /* ---------------- Role Modal ---------------- */
 .modal {
@@ -273,3 +277,36 @@ ul { margin: 0.4em 0; padding-left: 1.2em; }
 @media (max-width: 700px) { .battle-teams { grid-template-columns: 1fr; } }
 
 .battle-footer { display: flex; justify-content: center; gap: 16px; padding: 20px 0 40px; }
+
+/* ---------------- Explore Cards ---------------- */
+.explore-header {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.explore-title { margin: 0; flex: 1; text-align: center; color: var(--accent-2); font-size: 1.4rem; }
+.explore-count { color: var(--ink-dim); font-size: 0.85rem; white-space: nowrap; }
+
+.explore-controls {
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  justify-content: center; margin-bottom: 20px;
+}
+.explore-search, .explore-sort {
+  background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--ink); padding: 10px 14px; font-size: 0.9rem;
+}
+.explore-search { width: 260px; }
+.explore-search:focus, .explore-sort:focus { outline: 2px solid var(--accent); }
+.explore-tiers { display: flex; gap: 8px; flex-wrap: wrap; }
+.tier-chip {
+  background: var(--bg-panel); border: 1px solid var(--border); border-radius: 20px;
+  color: var(--ink-dim); padding: 8px 16px; font-size: 0.85rem; font-weight: 700;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.tier-chip:hover { border-color: var(--accent); }
+.tier-chip.active { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #23140a; border-color: transparent; }
+
+.explore-grid {
+  display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;
+  padding-bottom: 40px;
+}
+.explore-empty { color: var(--ink-dim); padding: 60px 0; font-size: 1rem; }

@@ -29,6 +29,11 @@
           <div class="mode-title">Two Player</div>
           <div class="mode-sub">Local hotseat draft</div>
         </button>
+        <button id="btn-mode-explore" class="mode-card">
+          <div class="mode-icon">🔍</div>
+          <div class="mode-title">Explore Cards</div>
+          <div class="mode-sub">Browse all 200 characters</div>
+        </button>
       </div>
 
       <div class="name-form">
@@ -46,6 +51,33 @@
         </ul>
       </div>
     </div>
+  </section>
+
+  <!-- ============ EXPLORE CARDS SCREEN ============ -->
+  <section id="screen-explore" class="screen hidden">
+    <div class="explore-header">
+      <button id="btn-explore-back" class="btn btn-discard">← Back</button>
+      <h2 class="explore-title">Explore Cards</h2>
+      <div id="explore-count" class="explore-count"></div>
+    </div>
+
+    <div class="explore-controls">
+      <input id="explore-search" type="text" class="explore-search" placeholder="Search by name or title…">
+      <div id="explore-tiers" class="explore-tiers">
+        <button class="tier-chip active" data-tier="all">All</button>
+        <button class="tier-chip" data-tier="god">God</button>
+        <button class="tier-chip" data-tier="kage">Kage</button>
+        <button class="tier-chip" data-tier="elite">Elite Jonin</button>
+        <button class="tier-chip" data-tier="common">Chunin/Genin</button>
+      </div>
+      <select id="explore-sort" class="explore-sort">
+        <option value="ovr-desc">Sort: OVR (high→low)</option>
+        <option value="ovr-asc">Sort: OVR (low→high)</option>
+        <option value="name-asc">Sort: Name (A→Z)</option>
+      </select>
+    </div>
+
+    <div id="explore-grid" class="explore-grid"></div>
   </section>
 
   <!-- ============ DRAFT SCREEN ============ -->

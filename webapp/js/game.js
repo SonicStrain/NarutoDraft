@@ -104,6 +104,7 @@ function teamAggregate(p) {
 
 /* ---------------- Screens & rendering ---------------- */
 const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
 function show(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
   $('#' + screenId).classList.remove('hidden');
@@ -384,6 +385,38 @@ function startBattle() {
   Sound.victory();
 }
 
+/* ---------------- Explore Cards ---------------- */
+const Explore = { tier: 'all', search: '', sort: 'ovr-desc' };
+
+function renderExplore() {
+  let list = CHARACTERS.filter(c => {
+    if (Explore.tier !== 'all' && c.tier !== Explore.tier) return false;
+    if (Explore.search) {
+      const q = Explore.search.toLowerCase();
+      if (!c.name.toLowerCase().includes(q) && !c.title.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+  list = list.slice().sort((a, b) => {
+    if (Explore.sort === 'ovr-desc') return b.ovr - a.ovr;
+    if (Explore.sort === 'ovr-asc') return a.ovr - b.ovr;
+    return a.name.localeCompare(b.name);
+  });
+
+  $('#explore-count').textContent = `${list.length} / ${CHARACTERS.length} characters`;
+  const grid = $('#explore-grid');
+  grid.innerHTML = list.length
+    ? list.map(c => cardHTML(c, {})).join('')
+    : `<div class="explore-empty">No characters match your search.</div>`;
+  armImageFallbacks(grid);
+}
+
+function openExplore() {
+  Sound.click();
+  show('screen-explore');
+  renderExplore();
+}
+
 /* ---------------- Wiring ---------------- */
 document.addEventListener('DOMContentLoaded', () => {
   $('#btn-mode-ai').addEventListener('click', () => { $('#name-p2-wrap').classList.add('hidden'); startGame('ai'); });
@@ -405,4 +438,16 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#role-modal').addEventListener('click', e => { if (e.target.id === 'role-modal') closeRoleModal(); });
   $('#btn-rematch').addEventListener('click', () => startGame(G.mode));
   $('#btn-home').addEventListener('click', () => show('screen-home'));
+
+  $('#btn-mode-explore').addEventListener('click', openExplore);
+  $('#btn-explore-back').addEventListener('click', () => { Sound.click(); show('screen-home'); });
+  $('#explore-search').addEventListener('input', e => { Explore.search = e.target.value; renderExplore(); });
+  $('#explore-sort').addEventListener('change', e => { Explore.sort = e.target.value; renderExplore(); });
+  $('#explore-tiers').addEventListener('click', e => {
+    const chip = e.target.closest('.tier-chip');
+    if (!chip) return;
+    Explore.tier = chip.dataset.tier;
+    $$('.tier-chip').forEach(el => el.classList.toggle('active', el === chip));
+    renderExplore();
+  });
 });
