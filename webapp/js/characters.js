@@ -47,7 +47,7 @@ C('Mito Uzumaki', 'First 9-Tails Jinchūriki', 92, 90, 60, 75, 97, 65, 90, 'http
 C('Rin Nohara', 'Former 3-Tails Jinchūriki', 72, 70, 60, 55, 75, 62, 74, 'https://static.wikia.nocookie.net/naruto/images/b/bc/Rin_Nohara.png/revision/latest?cb=20220205122410');
 C('Blue B', 'Former 8-Tails Jinchūriki · Fukai', 84, 85, 78, 50, 90, 75, 70, 'https://static.wikia.nocookie.net/naruto/images/b/bd/Blue_B.png/revision/latest?cb=20220124124640');
 C('Obito Uchiha', '10-Tails Jinchūriki', 97, 98, 85, 88, 99, 93, 90, 'https://static.wikia.nocookie.net/naruto/images/4/4a/Obito_Uchiha.png/revision/latest?cb=20220223045744');
-C('Madara Uchiha', '10-Tails Jinchūriki · Ghost of the Uchiha', 99, 99, 95, 96, 99, 94, 96, 'https://static.wikia.nocookie.net/naruto/images/0/06/Kid_Madara.png/revision/latest?cb=20230320174531');
+C('Madara Uchiha', '10-Tails Jinchūriki · Ghost of the Uchiha', 98, 98, 95, 96, 98, 94, 96, 'https://static.wikia.nocookie.net/naruto/images/0/06/Kid_Madara.png/revision/latest?cb=20230320174531');
 C('Hagoromo Otsutsuki', 'First 10-Tails Jinchūriki · Sage of Six Paths', 99, 99, 90, 95, 99, 90, 99, 'https://static.wikia.nocookie.net/naruto/images/8/83/Kid_Hagoromo.png/revision/latest?cb=20160528091016');
 C('Kinkaku', 'Pseudo 9-Tails · Gold Brother', 86, 87, 84, 40, 92, 78, 60, 'https://static.wikia.nocookie.net/naruto/images/f/f4/Kinkaku_268.png/revision/latest?cb=20160127045238');
 C('Ginkaku', 'Pseudo 9-Tails · Silver Brother', 86, 86, 83, 42, 91, 78, 62, 'https://static.wikia.nocookie.net/naruto/images/0/03/Ginkaku_268.png/revision/latest?cb=20160127044749');
