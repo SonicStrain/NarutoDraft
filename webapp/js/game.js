@@ -142,18 +142,21 @@ function cardHTML(card, opts) {
   </div>`;
 }
 
-/* Belt-and-braces image fallback: onerror covers fast HTTP failures,
-   this timeout covers slow/hanging connections (e.g. bot-challenge
-   pages that never resolve to a real image response). */
+/* Belt-and-braces image fallback: onerror covers fast HTTP failures, a
+   timeout covers slow/hanging connections. The timeout never has the
+   final word, though — a 'load' listener stays attached, so an image
+   that was just slow (e.g. a cold mobile connection loading 35+ cards
+   at once on the Explore screen) still swaps back in the moment it
+   actually finishes, instead of being stuck on the fallback forever. */
 function armImageFallbacks(root) {
   root.querySelectorAll('.card-art img').forEach(img => {
+    const fb = img.nextElementSibling;
+    const showFallback = () => { img.style.display = 'none'; if (fb) fb.style.display = 'flex'; };
+    const showImage = () => { img.style.display = ''; if (fb) fb.style.display = 'none'; };
+    img.addEventListener('load', () => { if (img.naturalWidth > 0) showImage(); });
     setTimeout(() => {
-      if (!img.complete || img.naturalWidth === 0) {
-        img.style.display = 'none';
-        const fb = img.nextElementSibling;
-        if (fb) fb.style.display = 'flex';
-      }
-    }, 3000);
+      if (!img.complete || img.naturalWidth === 0) showFallback();
+    }, 8000);
   });
 }
 
