@@ -1,5 +1,10 @@
 # Android / Gradle
 android/local.properties
+
+# Release signing secrets — the keystore and its passwords must never be
+# committed. Generated locally; back these up outside the repo.
+android/keystore.properties
+android/keystore/
 android/.gradle/
 android/build/
 android/app/build/
