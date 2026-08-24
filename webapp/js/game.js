@@ -127,7 +127,7 @@ function cardHTML(card, opts) {
         <span class="ovr-tier">${TIER_LABELS[card.tier]}</span>
       </div>
       <div class="card-art">
-        <img src="${card.img}" alt="${card.name}" loading="lazy"
+        <img src="${card.img}" alt="${card.name}" loading="lazy" referrerpolicy="no-referrer"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="art-fallback" style="display:none">${initials(card.name)}</div>
       </div>
