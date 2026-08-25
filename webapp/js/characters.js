@@ -126,7 +126,7 @@ C('Mikoto Uchiha', 'Uchiha Matriarch', 76, 76, 70, 74, 68, 68, 74, 'https://stat
 C('Izuna Uchiha', "Madara's Brother", 90, 89, 86, 90, 84, 88, 84, 'https://static.wikia.nocookie.net/naruto/images/8/83/Izuna_Uchiha.png/revision/latest/scale-to-width-down/300?cb=20170818214808');
 C('Kagami Uchiha', 'Trusted by Tobirama', 87, 85, 80, 86, 78, 82, 85, 'https://static.wikia.nocookie.net/naruto/images/7/73/Kagami-Uchiha.png/revision/latest/scale-to-width-down/300?cb=20220607100358');
 C('Tajima Uchiha', 'Warring States Patriarch', 86, 84, 82, 84, 80, 80, 82, 'https://static.wikia.nocookie.net/naruto/images/2/26/Tajima_Uchiha.png/revision/latest/scale-to-width-down/300?cb=20140710125908');
-C('Kaguya Otsutsuki', 'Rabbit Goddess · Progenitor', 99, 99, 90, 95, 99, 93, 80, 'https://static.wikia.nocookie.net/naruto/images/6/6c/Kaguya_%C5%8Ctsutsuki.png/revision/latest/scale-to-width-down/300?cb=20180824113908');
+C('Kaguya Otsutsuki', 'Rabbit Goddess · Progenitor', 99, 99, 90, 99, 99, 93, 80, 'https://static.wikia.nocookie.net/naruto/images/6/6c/Kaguya_%C5%8Ctsutsuki.png/revision/latest/scale-to-width-down/300?cb=20180824113908');
 C('Hamura Otsutsuki', 'Moon Sage', 98, 98, 90, 90, 98, 90, 92, 'https://static.wikia.nocookie.net/naruto/images/4/4d/Hamura_%C5%8Ctsutsuki.png/revision/latest/scale-to-width-down/300?cb=20150711133055');
 C('Indra Otsutsuki', 'Ancestor of the Uchiha', 96, 97, 85, 94, 94, 88, 92, 'https://static.wikia.nocookie.net/naruto/images/b/bd/Indra_%C5%8Ctsutsuki.png/revision/latest/scale-to-width-down/300?cb=20220214090844');
 C('Asura Otsutsuki', 'Ancestor of the Senju', 96, 96, 90, 60, 98, 85, 84, 'https://static.wikia.nocookie.net/naruto/images/5/56/Asura_%C5%8Ctsutsuki.png/revision/latest/scale-to-width-down/300?cb=20220214090535');

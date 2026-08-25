@@ -164,16 +164,44 @@ function cardHTML(card, opts) {
    final word, though — a 'load' listener stays attached, so an image
    that was just slow (e.g. a cold mobile connection loading 35+ cards
    at once on the Explore screen) still swaps back in the moment it
-   actually finishes, instead of being stuck on the fallback forever. */
+   actually finishes, instead of being stuck on the fallback forever.
+
+   The countdown is only armed once a card is actually near the
+   viewport (via IntersectionObserver), not the instant the grid is
+   rendered. Cards use loading="lazy", so the browser doesn't even
+   start fetching an off-screen image until you scroll near it — arming
+   an 8s countdown at render time meant far-down cards timed out and
+   got hidden before their fetch had even begun, and a hidden image has
+   no layout box for the browser's lazy-load viewport check to ever
+   consider "near", so it would never be attempted again. */
+function armSingleImageFallback(img) {
+  const fb = img.nextElementSibling;
+  const showFallback = () => { img.style.display = 'none'; if (fb) fb.style.display = 'flex'; };
+  const showImage = () => { img.style.display = ''; if (fb) fb.style.display = 'none'; };
+  img.addEventListener('load', () => { if (img.naturalWidth > 0) showImage(); });
+  setTimeout(() => {
+    if (!img.complete || img.naturalWidth === 0) showFallback();
+  }, 8000);
+}
+
+const lazyFallbackObserver = ('IntersectionObserver' in window)
+  ? new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          armSingleImageFallback(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '600px' })
+  : null;
+
 function armImageFallbacks(root) {
   root.querySelectorAll('.card-art img').forEach(img => {
-    const fb = img.nextElementSibling;
-    const showFallback = () => { img.style.display = 'none'; if (fb) fb.style.display = 'flex'; };
-    const showImage = () => { img.style.display = ''; if (fb) fb.style.display = 'none'; };
-    img.addEventListener('load', () => { if (img.naturalWidth > 0) showImage(); });
-    setTimeout(() => {
-      if (!img.complete || img.naturalWidth === 0) showFallback();
-    }, 8000);
+    if (lazyFallbackObserver) {
+      lazyFallbackObserver.observe(img);
+    } else {
+      armSingleImageFallback(img);
+    }
   });
 }
 
@@ -425,6 +453,7 @@ function renderExplore() {
 
   $('#explore-count').textContent = `${list.length} / ${CHARACTERS.length} characters`;
   const grid = $('#explore-grid');
+  if (lazyFallbackObserver) lazyFallbackObserver.disconnect(); // drop refs to cards from the previous filter/search pass
   grid.innerHTML = list.length
     ? list.map(c => cardHTML(c, {})).join('')
     : `<div class="explore-empty">No characters match your search.</div>`;
