@@ -1,5 +1,6 @@
 /* ============================================================
-   NARUTO DRAFT — Complete 200-Character Database
+   NARUTO DRAFT — Complete 209-Character Database
+   (200 shinobi/allies + the 9 Tailed Beasts, Groups 1-11)
    Stats: NIN, TAI, GEN, CHK, SPD, BIQ (1–99), OVR fixed per design doc.
    Images: resolved via the Narutopedia (Fandom) MediaWiki API to direct
    static.wikia.nocookie.net CDN URLs — the naruto.fandom.com wiki domain
@@ -251,7 +252,18 @@ C('Gato', 'Shipping Magnate Tyrant', 50, 1, 30, 20, 10, 25, 75, 'https://static.
 C('Tazuna', 'Master Bridge Builder', 50, 1, 35, 5, 15, 25, 70, 'https://static.wikia.nocookie.net/naruto/images/4/46/Tazuna_Part_II.png/revision/latest/scale-to-width-down/300?cb=20180811083233');
 C('Tonton', "Shizune's Legendary Pig", 99, 90, 85, 95, 92, 96, 99, 'https://static.wikia.nocookie.net/naruto/images/b/b7/Tonton.png/revision/latest/scale-to-width-down/300?cb=20150130150127');
 
+/* ---------- GROUP 11: THE TAILED BEASTS ---------- */
+C('Shukaku', '1-Tail · Sand Spirit', 85, 82, 78, 30, 95, 75, 55, 'https://static.wikia.nocookie.net/naruto/images/9/99/Shukaku.png/revision/latest/scale-to-width-down/300?cb=20140916210030');
+C('Matatabi', '2-Tails · Flame Cat', 86, 84, 76, 35, 94, 82, 62, 'https://static.wikia.nocookie.net/naruto/images/a/a7/Matatabi.png/revision/latest/scale-to-width-down/300?cb=20140818015320');
+C('Isobu', '3-Tails · Coral Turtle', 87, 85, 82, 30, 95, 60, 58, 'https://static.wikia.nocookie.net/naruto/images/d/df/Isobu.png/revision/latest/scale-to-width-down/300?cb=20130913110358');
+C('Son Goku', '4-Tails · Lava Monkey', 88, 86, 90, 25, 95, 84, 60, 'https://static.wikia.nocookie.net/naruto/images/5/5e/Son_Goku.png/revision/latest/scale-to-width-down/300?cb=20140817220446');
+C('Kokuo', '5-Tails · Steam Kirin', 88, 85, 80, 35, 96, 78, 68, 'https://static.wikia.nocookie.net/naruto/images/a/a3/Kokuo.png/revision/latest/scale-to-width-down/300?cb=20140817215510');
+C('Saiken', '6-Tails · Acid Slug', 89, 87, 78, 30, 97, 74, 72, 'https://static.wikia.nocookie.net/naruto/images/5/58/Saiken.png/revision/latest/scale-to-width-down/300?cb=20140211075946');
+C('Chomei', '7-Tails · Scale Beetle', 90, 88, 80, 35, 96, 90, 65, 'https://static.wikia.nocookie.net/naruto/images/7/78/Chomei.png/revision/latest/scale-to-width-down/300?cb=20130913103927');
+C('Gyuki', '8-Tails · Ox-Octopus', 93, 90, 92, 40, 97, 82, 80, 'https://static.wikia.nocookie.net/naruto/images/d/d7/Gyuki.png/revision/latest/scale-to-width-down/300?cb=20140817221249');
+C('Kurama', '9-Tails · King of the Tailed Beasts', 97, 95, 90, 45, 99, 92, 90, 'https://static.wikia.nocookie.net/naruto/images/7/7b/Kurama2.png/revision/latest/scale-to-width-down/300?cb=20140818171718');
+
 /* ---------- Sanity guard ---------- */
-if (CHARACTERS.length !== 200) {
-  console.error('Character database corrupted: expected 200, got ' + CHARACTERS.length);
+if (CHARACTERS.length !== 209) {
+  console.error('Character database corrupted: expected 209, got ' + CHARACTERS.length);
 }

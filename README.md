@@ -1,7 +1,7 @@
 # Naruto Draft
 
 A FIFA Ultimate Team-style character draft game built on the Naruto / Naruto
-Shippūden roster — 200 characters, 6 team roles, a 2-discard draft, and an
+Shippūden roster — 209 characters, 6 team roles, a 2-discard draft, and an
 automated battle simulator. Ships as a web app and as a native Android app
 that wraps the same web app.
 
@@ -11,7 +11,7 @@ that wraps the same web app.
 webapp/                  Self-contained web app (no build step, no deps)
   index.html
   css/style.css
-  js/characters.js       200-character database (stats, tiers, art)
+  js/characters.js       209-character database (stats, tiers, art)
   js/game.js              Draft engine, AI, battle simulator, rendering
 
 android/                 Android Studio project (WebView shell)
@@ -50,7 +50,7 @@ Or open the `android/` folder directly in Android Studio and click Run.
 
 ## Game rules
 
-- Each match draws random characters (no duplicates) from the 200-character
+- Each match draws random characters (no duplicates) from the 209-character
   pool, one at a time, alternating between the two players.
 - Every team fills exactly 6 roles: **Leader, Attacker, Defender, Support,
   Healer, Wildcard**. Each role favors different attributes (shown as a
